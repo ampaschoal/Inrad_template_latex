@@ -1,0 +1,114 @@
+% Style guidelines obtained from: https://www.imsa.edu/marcom-toolkit/
+% ====================
+% Dependencies
+% ====================
+\mode<presentation>
+
+%\usepackage[default]{sourcesanspro}
+%\newfontfamily\DinFF{DINBold.ttf}
+%\usepackage{fontspec}
+%\RequirePackage{exscale}
+%\RequirePackage{ragged2e}
+%\RequirePackage{changepage}
+%\RequirePackage{fontspec}
+
+%\usepackage{fontenc}
+
+
+% ====================
+% Fonts
+% ====================
+
+
+
+\definecolor{AzulPrimario}{RGB}{4,68,186}
+\definecolor{AzulSecundario}{RGB}{3,211,252}
+\definecolor{Amarelo}{RGB}{252,180,33}
+
+\newcommand\Includegraphics[2][]{%https://tex.stackexchange.com/a/306615/105075
+  \raisebox{-.5\dimexpr\height-\ht\strutbox+\dp\strutbox}{\includegraphics[#1]{#2}}}
+
+\setbeamercolor*{palette primary}{use=structure,fg=white,bg=AzulPrimario}
+\setbeamercolor*{palette secondary}{use=structure,fg=black,bg=AzulSecundario}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=Amarelo}
+\setbeamercolor*{palette quaternary}{fg=white,bg=black}
+
+\setbeamercolor{item}{fg=AzulPrimario}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{block title}{bg=AzulPrimario,fg=white}
+\setbeamercolor{block body}{bg=AzulSecundario,fg=black}
+\setbeamercolor{titlelike}{fg=AzulPrimario}
+\setbeamercolor{section in head/foot}{fg=white,bg=AzulSecundario}
+\setbeamercolor{structure}{fg=AzulPrimario}
+\setbeamerfont{institute}{size={\fontsize{7}{7}}}
+\setbeamerfont{frametitle}{size={\fontsize{11}{11}}}
+
+\setbeamertemplate{frametitle}{
+    \nointerlineskip
+    \begin{beamercolorbox}[sep=0.2cm,ht=1.5em,wd=\paperwidth]{palette primary}
+        \vbox{}\vskip-1.3ex%
+        \strut\insertframetitle\strut
+        \hfill
+        \Includegraphics[width=0.125\framewidth]{InradFrametitle2}
+        \vskip-0.5ex%
+    \end{beamercolorbox}
+    \nointerlineskip
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.25ex,dp=1ex]{palette secondary}%
+    \end{beamercolorbox}
+    %\nointerlineskip
+    %\begin{beamercolorbox}[wd=\paperwidth,ht=0.25ex,dp=0.5ex]{palette tertiary}%
+    %\end{beamercolorbox}
+}
+
+\setbeamerfont{section in head/foot}{series=\bfseries}
+\setbeamertemplate{section in head/foot shaded}{%
+    \textnormal{\color{AzulSecundario}\usebeamertemplate{section in head/foot}}
+}
+
+\setbeamertemplate{headline}{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette primary}%
+        \insertsectionnavigationhorizontal{\paperwidth}{\hfill}{\hfill}
+    \end{beamercolorbox}
+}
+
+\setbeamertemplate{footline}{%
+    %\nointerlineskip
+    %\begin{beamercolorbox}[wd=\paperwidth,ht=0.25ex,dp=0.5ex]{palette tertiary}%
+    %\end{beamercolorbox}
+    \nointerlineskip
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.25ex,dp=0.5ex]{palette secondary}%
+    \end{beamercolorbox}
+    \nointerlineskip
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.25ex,dp=1ex]{palette primary}%
+    \end{beamercolorbox}
+    %\vbox{}\vskip-2ex%
+    %\strut\insertframetitle\strut
+    %\hfill
+    %\Includegraphics[width=0.5\framewidth]{InradFrametitle}
+    %\vskip-0.8ex%   
+}
+
+\setbeamertemplate{section in toc}[square]
+
+\AtBeginSection[]
+{
+    \begin{frame}[noframenumbering]
+        \frametitle{Table of contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\setbeamercovered{transparent} 
+\setbeamerfont{footnote}{size=\scriptsize}
+
+
+\setbeamertemplate{navigation symbols}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\renewcommand*{\thefootnote}{\alph{footnote}}
+
+\mode<all>

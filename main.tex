@@ -1,0 +1,133 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{parskip}
+\usepackage{tabularx}
+\usepackage{textgreek}
+
+\usepackage{media9}
+\usepackage{graphicx}
+%\usepackage{fontspec}
+\usepackage[roman]{parnotes}
+
+\usepackage{utopia} %font utopia imported
+
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\usetheme{inrad}
+
+\makeatletter
+    \newenvironment{withoutheadline}{
+        \setbeamertemplate{headline}[default]
+        \def\beamer@entrycode{\vspace*{-\headheight}}
+    }{}
+\makeatother
+
+\makeatletter
+    \newenvironment{withoutfootline}{
+        \setbeamertemplate{footline}[default]
+        \def\beamer@entrycode{\vspace*{-\headheight}}
+    }{}
+\makeatother
+
+\def\vfilll{\vskip 0pt plus 1filll minus 0pt }
+
+\usepackage[style=authoryear,backend=bibtex8,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+\renewbibmacro{in:}{}
+\AtEveryCitekey{%
+    \clearfield{volume}%
+    \clearfield{number}%
+    \clearfield{title}%
+    \clearfield{pages}}
+\addbibresource{library.bib}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[Abstract Title] %optional
+{This is the name of your presentation}
+
+%\subtitle{An IMSA-branded Beamer template for SIR presentations}
+
+\author[Authors] % (optional)
+{\textbf{Author1\inst{1}\textsuperscript{,}\inst{2}}; Author2\inst{3}\textsuperscript{,}\inst{4}; Author3\inst{5}; author4\inst{2}}
+
+\institute[] % (optional)
+{
+  \inst{1}%
+  LIM44, Instituto e Departamento de Radiologia, Faculdade de Medicina, Universidade de Sao Paulo - Sao Paulo, Brazil; \hfill
+  \inst{2}% \hfill
+  Institution 2;
+  \inst{3} \hfill
+  Institution 3;
+  \inst{4} \hfill
+  Institution 4;
+  \inst{5} \hfill
+  Institution 5.
+}
+
+\date[Sao Paulo 2021] % (optional)
+{Sao Paulo, April 13\textsuperscript{th}, 2021}
+
+
+
+%End of title page configuration block
+%------------------------------------------------------------
+% Patch to move title block down
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+%makeatletter
+%  \newenvironment{settitle}{
+%   \expandafter\patchcmd\csname beamer@@tmpl@title page\endcsname% <cmd>
+%   {\vfill}% <search> 
+%    {\vspace*{0.4in}}% <replace>
+%    {}{}% <success><failure>
+%    }{}
+%\makeatother
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+%\AtBeginSection[]
+%{
+%  \begin{frame}
+%    \frametitle{Table of Contents}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+% Title Page
+
+\begin{withoutheadline}
+\begin{withoutfootline}
+%\begin{settitle}
+  \usebackgroundtemplate{\includegraphics[width=\paperwidth]{titlebackground.png}}
+  %\vspace*{0.1in}
+  \begin{frame}[plain]
+    \vfill
+    \vfill
+    %\vfilll
+    \vspace*{0.4in}
+    \titlepage
+    %\vfilll
+    \usebeamerfont{institute} \centering \textcolor{black}{Contact: \url{email@usp.br}}
+    %{Contact: \url{andre.paschoal@usp.br}}
+  \end{frame}
+%\end{settitle}
+\end{withoutfootline}
+\end{withoutheadline}
+% use points template from now on
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{pointbackground.png}}
+
+\input{content.tex}
+
+
+\end{document}
